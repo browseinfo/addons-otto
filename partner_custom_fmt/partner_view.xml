@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record model="ir.ui.view" id="view_partner_form_inh_custom_fmt_01">
+            <field name="name">view.partner.form.inh.custom.fmt.01</field>
+            <field name="type">form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <page string="Internal Notes" position="after">
+                    <page string="FMT">
+                    <group>
+                        <field name="programa_id" />
+                        <field name="medio_id" />
+                        <field name="frecuencia_id" />
+                        <field name="visita_id" />
+                        <field name="fecha_nacimiento" />
+                        <field name="donativo" />
+                        <field name="padrino_ok" invisible="1"/>
+                        <field name="partner_padrino_ids" colspan="4" attrs="{'readonly':[('customer','=',False)]}"/>
+                        <field name="partner_alumno_ids" colspan="4" attrs="{'readonly':[('padrino_ok','=',False)]}"/>
+                        </group>
+                    </page>
+                </page>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_partner_tree_inh_custom_fmt_01">
+            <field name="name">view.partner.tree.inh.custom.fmt.01</field>
+            <field name="type">tree</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                        <field name="programa_id"/>
+
+                </field>
+            </field>
+        </record>
+        
+        
+        <record model="ir.ui.view" id="view_partner_form_inh_custom_fmt_02">
+            <field name="name">view.partner.form.inh.custom.fmt.02</field>
+            <field name="type">form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="supplier" position="after">
+                    <field name="padrino_ok"/>
+                </field>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_partner_search_inh_custom_fmt_01">
+            <field name="name">view.partner.search.inh.custom.fmt.01</field>
+            <field name="type">search</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <filter name="supplier" position="after">
+                    <filter string="Padrino" name="padrino_ok" icon="terp-personal" domain="[('padrino_ok','=',1)]" help="Partners del tipo Padrinos"/>
+                </filter>
+                <filter string="Salesperson" position="after">
+                    <filter string="programa" icon="terp-personal" domain="[]" context="{'group_by' : 'programa_id'}" />
+                </filter>
+            </field>
+        </record>
+        <!--
+        
+        <record model="ir.ui.view" id="view_partner_address_search_inh_custom_fmt_01">
+            <field name='name'>view.partner.search.inh.custom.fmt.01</field>
+            <field name='model'>res.partner.address</field>
+            <field name="inherit_id" ref="base.view_res_partner_address_filter"/>
+            <field name='type'>search</field>
+            <field name='arch' type='xml'>
+                <filter name="supplier" position="after">
+                    <filter string="Padrino" name="is_padrino_add" icon="terp-personal" domain="[('is_padrino_add','=',1)]" help="Contactos de Partners del tipo Padrinos"/>
+                </filter>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_partner_form_inherit2">
+            <field name="name">res.partner.form</field>
+            <field name="type">form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="category_id" position="replace">
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_partner_address_form_inherited0">
+            <field name='name'>res.partner.address.form.inherited0</field>
+            <field name='model'>res.partner.address</field>
+            <field name="inherit_id" ref="base.view_partner_address_form1"/>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <field name="type" position="replace">
+                </field>
+            </field>
+        </record>
+        -->
+        
+        <record model="ir.ui.view" id="view_partner_medio_form">
+            <field name="name">view.partner.medio.form</field>
+            <field name="type">form</field>
+            <field name="model">res.partner.medio</field>
+            <field name="arch" type="xml">
+                <form string="medio">
+                    <field name="name"/>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_partner_medio_tree">
+            <field name="name">view.partner.medio.tree</field>
+            <field name="type">tree</field>
+            <field name="model">res.partner.medio</field>
+            <field name="arch" type="xml">
+                <tree string="medio">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_view_partner_medio_form" model="ir.actions.act_window">
+            <field name="name">Medio</field>
+            <field name="res_model">res.partner.medio</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_action_view_partner_medio_form" name="Medios" parent="base.menu_base_config" sequence="2" action="action_view_partner_medio_form"/>
+        
+        <record model="ir.ui.view" id="view_partner_frecuencia_form">
+            <field name="name">view.partner.frecuencia.form</field>
+            <field name="type">form</field>
+            <field name="model">res.partner.frecuencia</field>
+            <field name="arch" type="xml">
+                <form string="frecuencia">
+                    <field name="name"/>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_partner_frecuencia_tree">
+            <field name="name">view.partner.frecuencia.tree</field>
+            <field name="type">tree</field>
+            <field name="model">res.partner.frecuencia</field>
+            <field name="arch" type="xml">
+                <tree string="frecuencia">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_view_partner_frecuencia_form" model="ir.actions.act_window">
+            <field name="name">frecuencia</field>
+            <field name="res_model">res.partner.frecuencia</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_action_view_partner_frecuencia_form" name="frecuencias" parent="base.menu_base_config" sequence="2" action="action_view_partner_frecuencia_form"/>
+        
+        
+        <record model="ir.ui.view" id="view_partner_programa_form">
+            <field name="name">view.partner.programa.form</field>
+            <field name="type">form</field>
+            <field name="model">res.partner.programa</field>
+            <field name="arch" type="xml">
+                <form string="programa">
+                    <field name="name"/>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_partner_programa_tree">
+            <field name="name">view.partner.programa.tree</field>
+            <field name="type">tree</field>
+            <field name="model">res.partner.programa</field>
+            <field name="arch" type="xml">
+                <tree string="programa">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_view_partner_programa_form" model="ir.actions.act_window">
+            <field name="name">programa</field>
+            <field name="res_model">res.partner.programa</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_action_view_partner_programa_form" name="programas" parent="base.menu_base_config" sequence="2" action="action_view_partner_programa_form"/>
+        
+        <record model="ir.ui.view" id="view_partner_visita_form">
+            <field name="name">view.partner.visita.form</field>
+            <field name="type">form</field>
+            <field name="model">res.partner.visita</field>
+            <field name="arch" type="xml">
+                <form string="visita">
+                    <field name="name"/>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_partner_visita_tree">
+            <field name="name">view.partner.visita.tree</field>
+            <field name="type">tree</field>
+            <field name="model">res.partner.visita</field>
+            <field name="arch" type="xml">
+                <tree string="visita">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_view_partner_visita_form" model="ir.actions.act_window">
+            <field name="name">visita</field>
+            <field name="res_model">res.partner.visita</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_action_view_partner_visita_form" name="visitas" parent="base.menu_base_config" sequence="2" action="action_view_partner_visita_form"/>
+        
+    </data>
+</openerp>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        
+        <report id="account_payment_voucher_receipt"
+            string="Recibo"
+            name="account.payment.voucher.receipt"
+            model="account.invoice"
+            rml="account_invoice_receipt/report/voucher_receipt_report.rml"
+            auto="True"
+            header="False"
+        />
+        
+        <report id="account_payment_voucher_agromercantil"
+            string="Cheque Agromercantil"
+            name="account.payment.voucher.agromercantil"
+            model="account.voucher"
+            rml="account_invoice_receipt/report/voucher_agromercantil_report.rml"
+            auto="True"
+            header="False"
+        />
+        
+        <report id="account_payment_voucher_industrial"
+            string="Cheque Voucher Gral"
+            name="account.payment.voucher.industrial"
+            model="account.voucher"
+            rml="account_invoice_receipt/report/voucher_industrial_report.rml"
+            auto="True"
+            header="False"
+        />
+        
+    </data>
+</openerp>

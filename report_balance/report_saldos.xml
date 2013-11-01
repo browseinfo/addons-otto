@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            id="report_saldos"
+            string="Reporte de Saldos"
+            model="account.invoice"
+            name="report.saldos"
+            auto="False"
+            menu="False"
+            rml="addons/report_balance/report/report_saldos.rml"
+            header="False"
+        />
+        <report
+            id="report_saldos_detalle"
+            string="Reporte de Saldos a Detalle"
+            model="account.invoice"
+            name="report.saldos.detalle"
+            auto="False"
+            menu="False"
+            rml="addons/report_balance/report/report_saldos_detalle.rml"
+            header="False"
+        />
+    </data>
+</openerp>

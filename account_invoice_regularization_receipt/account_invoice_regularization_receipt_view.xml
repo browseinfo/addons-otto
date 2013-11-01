@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="view_account_invoice_form_inh_custom_fmt">
+            <field name="name">view.account.invoice.form.inh.custom.fmt</field>
+            <field name="type">form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Payments']" position="after">
+                    <page string="FMT">
+                        <group>
+                            <field name="programa_id"/>
+                            <field name="medio_id"/>
+                            <field name="frecuencia_id"/>
+                            <field name="visita_id"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_account_invoice_tree_inh_custom_fmt">
+            <field name="name">view.account.invoice.tree.inh.custom.fmt</field>
+            <field name="type">tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <field name="state" position="after">
+                        <field name="programa_id"/>
+                        <field name="medio_id"/>
+                        <field name="frecuencia_id"/>
+                        <field name="visita_id"/>
+                </field>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="view_account_invoice_filter_inh_fmt">
+            <field name="name">view.account.invoice.filter.inh.fmt</field>
+            <field name="type">search</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <field name="period_id" position="after">
+                    <field name="date_invoice" select='1' string="Fecha_factura"/>
+                </field>
+                <filter string="Due Date" position="after">
+                    <filter string="Programa" icon="terp-personal" domain="[]" context="{'group_by' : 'programa_id'}" />
+                    <filter string="Medio" icon="terp-personal" domain="[]" context="{'group_by' : 'medio_id'}" />
+                    <filter string="Frecuencia" icon="terp-personal" domain="[]" context="{'group_by' : 'frecuencia_id'}" />
+                    <filter string="Visita" icon="terp-personal" domain="[]" context="{'group_by' : 'visita_id'}" />
+                </filter>
+            </field>
+        </record>
+    </data>
+</openerp>

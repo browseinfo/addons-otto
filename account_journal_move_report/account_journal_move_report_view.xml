@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--No mostrar el reporte, en el modelo-->
+        <report id="account_journal_move_report"
+            string="Report account journal move"
+            model="wizard.account.journal.move"
+            name="account.journal.move.report"
+            auto="False"
+            menu="False"
+            rml="account_journal_move_report/report/account_journal_move_report.rml"
+            header="False"
+        />
+
+    </data>
+</openerp>

@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+  <template pageSize="(595.0,842.0)" title="Test" author="Martin Simon" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="12.0" y1="57.0" width="526" height="743"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tabla5">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tabla1">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tabla2">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="P1" fontName="Helvetica" fontSize="10.0" leading="13"/>
+    <paraStyle name="P2" fontName="Helvetica" fontSize="9.0" leading="11"/>
+    <paraStyle name="P3" fontName="Helvetica" fontSize="10.0" leading="13" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P4" fontName="Helvetica" fontSize="10.0" leading="13" alignment="RIGHT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P5" fontName="Helvetica" fontSize="10.0" leading="13" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P6" fontName="Helvetica" fontSize="10.0" leading="13" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Standard" fontName="Helvetica"/>
+    <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Contents" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Heading" fontName="Helvetica" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Helvetica" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Helvetica"/>
+    <images/>
+  </stylesheet>
+  <story>
+    <para style="P1">[[ repeatIn(objects, 'o') ]]</para>
+    <section>
+      <para style="P1">
+        <font color="white"> </font>
+      </para>
+      <blockTable colWidths="148.0,219.0,160.0" style="Tabla5">
+        <tr>
+          <td>
+            <para style="P4">Guatemala,</para>
+          </td>
+          <td>
+            <para style="P3">[[ get_date_str_es( o.date ) ]] </para>
+          </td>
+          <td>
+            <para style="P5">[[ formatLang( o.amount ) ]]</para>
+          </td>
+        </tr>
+      </blockTable>
+      <blockTable colWidths="99.0,428.0" style="Tabla1">
+        <tr>
+          <td>
+            <para style="P3">
+              <font color="white"> </font>
+            </para>
+          </td>
+          <td>
+            <para style="P3">[[ o.partner_id.name ]]</para>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <para style="P3">
+              <font color="white"> </font>
+            </para>
+          </td>
+          <td>
+            <para style="P3">*** [[ amount_to_text(o.amount, 'es_cheque', 'GTQ') ]] CTS***</para>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <para style="P4">NO NEGOCIABLE</para>
+          </td>
+          <td>
+            <para style="P3">
+              <font color="white"> </font>
+            </para>
+          </td>
+        </tr>
+      </blockTable>
+      <para style="P1">
+        <font color="white"> </font>
+      </para>
+      <para style="P1">
+        <font color="white"> </font>
+      </para>
+      <para style="P1">
+        <font color="white"> </font>
+      </para>
+      <para style="P1">
+        <font color="white"> </font>
+      </para>
+      <para style="P1">
+        <font color="white"> </font>
+      </para>
+      <para style="P1">
+        <font color="white"> </font>
+      </para>
+      <blockTable colWidths="88.0,117.0,32.0,114.0,88.0,88.0" style="Tabla2">
+        <tr>
+          <td>
+            <para style="P6">[[ repeatIn( get_lines_order( o.move_ids )[:6], 'move') ]][[ move.account_id.code ]]</para>
+          </td>
+          <td>
+            <para style="P3">[[ move.account_id.name ]]</para>
+          </td>
+          <td>
+            <para style="P3">Dto</para>
+          </td>
+          <td>
+            <para style="P3">[[ move.name ]]</para>
+          </td>
+          <td>
+            <para style="P4">[[ move.debit and formatLang( move.debit ) or '' ]]</para>
+          </td>
+          <td>
+            <para style="P4">[[ move.credit and formatLang( move.credit ) or '' ]]</para>
+          </td>
+        </tr>
+      </blockTable>
+      <para style="P2">[[ len(o.move_ids)&gt;6 and ' (Faltan %s líneas más)'%(len(o.move_ids)-6) or '' ]]</para>
+    </section>
+    <para style="P6">
+      <font color="white"> </font>
+    </para>
+  </story>
+</document>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        
+        <report id="account_invoice_supplier_fmt"
+            string="Factura del Proveedor Formato FMT"
+            name="account.invoice.supplier.fmt"
+            model="account.invoice"            
+            rml="account_invoice_supplier_fmt/report/invoice_supplier_report_fmt.rml"
+            auto="True"
+            header="False"
+        />
+        
+    </data>
+</openerp>
